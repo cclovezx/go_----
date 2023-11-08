@@ -1,4 +1,4 @@
-package main
+package LinkLIst
 
 import (
 	"fmt"
@@ -8,12 +8,12 @@ import (
 
 // 定义一个链表的结构体
 type Node struct {
-	value int
+	value interface{}
 	Next  *Node
 }
 
 // 初始化链表
-func NewNode(value int) *Node {
+func NewNode(value interface{}) *Node {
 	return &Node{value, nil}
 }
 
@@ -27,14 +27,14 @@ func (n *Node) FindLast() *Node {
 }
 
 // 头插法
-func (n *Node) AddFirst(value int) {
+func (n *Node) AddFirst(value interface{}) {
 	newNode := NewNode(value)
 	newNode.Next = n.Next
 	n.Next = newNode
 }
 
 // 尾插法
-func (n *Node) AddLast(value int) {
+func (n *Node) AddLast(value interface{}) {
 	newNode := NewNode(value)
 	if n.Next == nil {
 		n.Next = newNode
@@ -53,7 +53,7 @@ func (n *Node) Print() {
 }
 
 // 查找链表中的节点
-func (n *Node) FindValue(value int) *Node {
+func (n *Node) FindValue(value interface{}) *Node {
 	current := n.Next
 	for current.Next != nil {
 		if current.value == value {
@@ -65,7 +65,7 @@ func (n *Node) FindValue(value int) *Node {
 }
 
 // 更新值
-func (n *Node) Replace(value int, index int) {
+func (n *Node) Replace(value interface{}, index interface{}) {
 	current := n.FindValue(index)
 	current.value = value
 }
@@ -82,7 +82,7 @@ func (n *Node) Len() int {
 }
 
 // 删除节点
-func (n *Node) Delete(value int) {
+func (n *Node) Delete(value interface{}) {
 	current := n.Next
 	for current.Next != nil {
 		find := current.Next

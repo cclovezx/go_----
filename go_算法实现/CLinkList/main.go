@@ -1,9 +1,9 @@
-package main
+package CLinkList
 
 import "fmt"
 
 type Node struct {
-	data int
+	data interface{}
 	next *Node
 }
 type CircularLinkedList struct {
@@ -11,12 +11,12 @@ type CircularLinkedList struct {
 }
 
 //初始化节点
-func NewNode(data int) *Node {
+func NewNode(data interface{}) *Node {
 	return &Node{data, nil}
 }
 
 //头插法
-func (cll *CircularLinkedList) AddFirst(data int) {
+func (cll *CircularLinkedList) AddFirst(data interface{}) {
 	newNode := NewNode(data)
 	if cll.head == nil {
 		cll.head = newNode
@@ -28,7 +28,7 @@ func (cll *CircularLinkedList) AddFirst(data int) {
 }
 
 //尾插法
-func (cll *CircularLinkedList) AddLast(data int) {
+func (cll *CircularLinkedList) AddLast(data interface{}) {
 	newNode := NewNode(data)
 
 	if cll.head == nil {
@@ -45,7 +45,7 @@ func (cll *CircularLinkedList) AddLast(data int) {
 }
 
 //查找
-func (cll *CircularLinkedList) FindValue(data int) *Node {
+func (cll *CircularLinkedList) FindValue(data interface{}) *Node {
 	current := cll.head
 	for current != cll.head && current.data != data {
 		current = current.next
@@ -57,7 +57,7 @@ func (cll *CircularLinkedList) FindValue(data int) *Node {
 }
 
 //删除
-func (cll *CircularLinkedList) Delete(data int) {
+func (cll *CircularLinkedList) Delete(data interface{}) {
 	if cll.head == nil {
 		fmt.Println("List is empty")
 		return
@@ -95,7 +95,7 @@ func (cll *CircularLinkedList) Delete(data int) {
 }
 
 //修改值
-func (cll *CircularLinkedList) Replace(value int, index int) {
+func (cll *CircularLinkedList) Replace(value interface{}, index interface{}) {
 	current := cll.FindValue(index)
 	current.data = value
 }
